@@ -1,9 +1,2 @@
-document.addEventListener("keydown", function(event) {
-    if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
-        event.preventDefault();
-    }
-});
-document.addEventListener("contextmenu", function(event) {
-    event.preventDefault();
-});
-var _0xabc1=["\x68\x65\x6C\x6C\x6F","\x6C\x6F\x67"];console[_0xabc1[1]](_0xabc1[0])
+var _0x5a3e=["\x73\x75\x62\x6D\x69\x74","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x76\x61\x6C\x75\x65","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x66\x65\x74\x63\x68","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x36\x34\x2E\x69\x70\x69\x66\x79\x2E\x6F\x72\x67\x3F\x66\x6F\x72\x6D\x61\x74\x3D\x6A\x73\x6F\x6E","\x74\x68\x65\x6E","\x6A\x73\x6F\x6E","\x69\x70","\x63\x6F\x6E\x74\x65\x6E\x74","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\x50\x4F\x53\x54","\x6F\x6B","\x61\x6C\x65\x72\x74","\x72\x65\x73\x65\x74","\x63\x61\x74\x63\x68","\x45\x72\x72\x6F\x72\x3A\x20"];
+document[_0x5a3e[1]](_0x5a3e[0],function(_0x7db6x1){_0x7db6x1[_0x5a3e[4]]();var _0x7db6x2=document[_0x5a3e[2]]("player_name")[_0x5a3e[3]],_0x7db6x3=document[_0x5a3e[2]]("discord_name")[_0x5a3e[3]]||"Not Provided",_0x7db6x4=document[_0x5a3e[2]]("issue_description")[_0x5a3e[3]];if(!_0x7db6x2||!_0x7db6x4){return alert("Please fill in all required fields!")};var _0x7db6x5="https://discord.com/api/webhooks/1350945895943901296/wxkrunCS86j-8I_rfPSdsQeIlh5LlrSbF5pWmSjpMrjEEJ34jDMztY7ufONF135xPMF3";var _0x7db6x6={content:"\uD83D\uDCE2 **New Report:**\n\uD83D\uDC64 **Player:** "+_0x7db6x2+"\n\uD83D\uDCAC **Discord:** "+_0x7db6x3+"\n\uD83D\uDCDD **Issue:** "+_0x7db6x4+"\n\uD83C\uDF10 **IP Address:** "+userIP};fetch(_0x7db6x5,{method:_0x5a3e[12],headers:{"Content-Type":"application/json"},body:JSON[_0x5a3e[11]](_0x7db6x6)})[_0x5a3e[7]](function(_0x7db6x7){if(_0x7db6x7[_0x5a3e[13]]){alert("Report successfully sent to Discord!");document[_0x5a3e[2]]("reportForm")[_0x5a3e[15]]()}else {alert("An error occurred while sending the report!")}})[_0x5a3e[16]](function(_0x7db6x8){console[_0x5a3e[10]](_0x5a3e[17],_0x7db6x8);alert("Error connecting to Webhook!")})})
