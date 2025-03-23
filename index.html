@@ -1,128 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DZSTREET ROLE PLAY - Report an Issue</title>
+    <title>تقرير الأدمين - سيرفر FiveM RP</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #1e1e1e;
+            background-color: #000000c7;
             color: white;
             text-align: center;
-            margin: 0;
-            padding: 0;
         }
         .container {
-            max-width: 500px;
-            margin: 20px auto;
-            background: #2c2f33;
+            width: 50%;
+            margin: auto;
+            background: #333;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
-        input, textarea, button {
+        input, textarea {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border-radius: 5px;
             border: none;
-            font-size: 16px;
+            background: #222;
+            color: rgb(255, 255, 255);
         }
         button {
-            background-color: #7289da;
-            color: white;
+            background: #ffd900;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
         }
-        button:hover {
-            background-color: #5b6eae;
-        }
-        .logo {
-            width: 100px;
-            margin-bottom: 10px;
-        }
-        .links {
-            margin: 10px 0;
-        }
-        .links a {
-            display: block;
-            color: #7289da;
-            text-decoration: none;
-            font-size: 18px;
-            margin: 5px 0;
-        }
-        .links a:hover {
-            color: #5b6eae;
-        }
     </style>
-</head>
-<body>
-    <div class="container">
-        <img src="file:///C:/Users/hgasd/OneDrive/Bureau/dzstreet/dz.png" alt="Server Logo" class="logo"> <!-- ضع رابط الشعار هنا -->
-        <h2>🚨 Submit a Report 🚨</h2>
-
-        <div class="links">
-            <a href="https://discord.gg/EGXJydz788" target="_blank">🔗 Join Our Server</a> <!-- ضع رابط السيرفر -->
-            <a href="https://www.youtube.com/@YOUCEF_GM-t" target="_blank">📺 Visit Our YouTube</a> <!-- ضع رابط اليوتيوب -->
-        </div>
-
-        <form id="reportForm">
-            <input type="text" id="player_name" placeholder="Player Name" required>
-            <input type="text" id="discord_name" placeholder="Discord Name (Optional)">
-            <textarea id="issue_description" placeholder="Issue Description" required></textarea>
-            <button type="submit">Submit Report</button>
-        </form>
-    </div>
-
     <script>
-        const webhookURL = "https://discord.com/api/webhooks/1350945895943901296/wxkrunCS86j-8I_rfPSdsQeIlh5LlrSbF5pWmSjpMrjEEJ34jDMztY7ufONF135xPMF3"; // ضع رابط Webhook هنا
-        let userIP = "Fetching..."; // المتغير الذي سيحمل عنوان IP
-
-        // جلب عنوان IP الخاص بالمستخدم
-        fetch("https://api64.ipify.org?format=json")
-        .then(response => response.json())
-        .then(data => {
-            userIP = data.ip; // تخزين عنوان IP في المتغير
-        })
-        .catch(error => console.error("Error fetching IP:", error));
-
-        document.getElementById("reportForm").addEventListener("submit", function(event) {
+        function sendReport(event) {
             event.preventDefault();
             
-            const playerName = document.getElementById("player_name").value;
-            const discordName = document.getElementById("discord_name").value || "Not Provided";
-            const issueDescription = document.getElementById("issue_description").value;
-
-            if (!playerName || !issueDescription) {
-                alert("Please fill in all required fields!");
-                return;
-            }
-
+            const webhookURL = "https://discord.com/api/webhooks/1353496059305005087/Ta3DGLnxqILAzj4Dmu54LLHd8U0ewm3ZseOBvXZIdHWBDS-n5CfPw-qTUtMUKmseflXt"; 
+            const adminDiscord = document.getElementById("adminDiscord").value;
+            const adminGame = document.getElementById("adminGame").value;
+            const playerDiscord = document.getElementById("playerDiscord").value;
+            const playerGame = document.getElementById("playerGame").value;
+            const punishment = document.getElementById("punishment").value;
+            const description = document.getElementById("description").value;
+            
             const message = {
-                content: `📢 **New Report:**\n👤 **Player:** ${playerName}\n💬 **Discord:** ${discordName}\n📝 **Issue:** ${issueDescription}\n🌐 **IP Address:** ${userIP}`
+                "content": "𝐃𝐙𝐒𝐓𝐑𝐄𝐄𝐓 𝐑𝐎𝐋𝐄𝐏𝐋𝐀𝐘 تقرير جديد عن لاعب مخالف:",
+                "embeds": [{
+                    "title": "تقرير أدمين",
+                    "color": 15158332,
+                    "fields": [
+                        { "name": "👮‍♂️ إسم الأدمين في ديسكورد", "value": adminDiscord, "inline": true },
+                        { "name": "🎮 إسم الأدمين في اللعبة", "value": adminGame, "inline": true },
+                        { "name": "👤 إسم اللاعب في ديسكورد", "value": playerDiscord, "inline": true },
+                        { "name": "🎭 إسم اللاعب في اللعبة", "value": playerGame, "inline": true },
+                        { "name": "🚨 العقوبة", "value": punishment, "inline": true },
+                        { "name": "📌 وصف المخالفة", "value": description }
+                    ]
+                }]
             };
-
+            
             fetch(webhookURL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(message)
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert("Report successfully sent to Discord!");
-                    document.getElementById("reportForm").reset();
-                } else {
-                    alert("An error occurred while sending the report!");
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Error connecting to Webhook!");
-            });
-        });
+            }).then(() => alert("تم إرسال التقرير بنجاح!"))
+            .catch(error => alert("حدث خطأ أثناء الإرسال!"));
+        }
     </script>
+</head>
+<body>
+    <div class="container">
+        <h2> DZSTREET_ROLEPLAY [-تقرير عن لاعب مخالف-]</h2>
+        <form id="reportForm" onsubmit="sendReport(event)">
+            <input type="text" id="adminDiscord" placeholder="إسم الأدمين في ديسكورد أو الآيدي" required>
+            <input type="text" id="adminGame" placeholder="إسم الأدمين في اللعبة" required>
+            <input type="text" id="playerDiscord" placeholder="إسم اللاعب في ديسكورد أو الآيدي" required>
+            <input type="text" id="playerGame" placeholder="إسم اللاعب في اللعبة" required>
+            <input type="text" id="punishment" placeholder="العقوبة" required>
+            <textarea id="description" placeholder="وصف المخالفة" required></textarea>
+            <button type="submit">إرسال التقرير</button>
+        </form>
+    </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> شكرا لي الجميع</title>
+    <style>
+        @keyframes moveUpDown {
+            100% { transform: translateY(100); }
+            100% { transform: translateY(-20px); }
+        }
 
+        .moving-text {
+            font-size: 20px;
+            font-weight: bold;
+            animation: moveUpDown 0.5s infinite alternate ease-in-out;
+        }
+    </style>
+</head>
+<body>
 
+    <div class="moving-text">اشكرا لي الجميع</div>
 
+</body>
+</html>
